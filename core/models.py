@@ -2,7 +2,8 @@ from django.db import models
 
 from django.utils import timezone
 import uuid
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from contas.models import Usuario
 from .softdelete import DeleteManager
 
 
@@ -40,5 +41,5 @@ class Movimentacao(BaseModel):
     valor = models.DecimalField(decimal_places=2, max_digits=15, default=0.00)
     data = models.DateTimeField(null=True, blank=True)
     tipo = models.CharField(max_length=100, choices=TIPO_MOVIMENTACAO)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
     
