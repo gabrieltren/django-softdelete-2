@@ -1,7 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Usuario
-
+from django import forms
 class UsuarioCreateForm(UserCreationForm):
+    telefone = forms.CharField(max_length=25)
     class Meta:
         fields = ['fist_name', 'last_name', 'cpf', 'telefone']
         labels = {'username': 'Usuario/Email'}

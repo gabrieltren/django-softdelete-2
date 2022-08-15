@@ -1,0 +1,49 @@
+<nav arial-label="navigation">
+    <ul class="pagination justify-content-center mb-0">
+        {% if movs.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{movs.previous_page_number}}">
+                <i><</i>
+                <span>Anterior</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{movs.previous_page_number}}">
+                    {{movs.previous_page_number}}
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="">
+                <i><</i>
+                <span>Anterior</span>
+                </a>
+            </li>
+        {% endif %}
+        <li class="page-item active">
+            <a class="page-link" href="?page={{movs.number}}">
+                {{movs.number}}
+            </a>
+        </li>
+        {% if movs.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{movs.next_page_number}}">
+                    {{movs.next_page_number}}
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{movs.next_page_number}}">
+                    <i>></i>
+                    <span>Próximo</span>
+                    </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="">
+                <i>></i>
+                <span>Próximo</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
