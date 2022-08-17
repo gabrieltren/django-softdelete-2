@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'core',
     'contas',
     "django_bootstrap5",
+    "rest_framework",
+    "django_filters"
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,20 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'contas.Usuario'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ]
+}
+
+
+# Date formats
+
+DATETIME_FORMAT_OUTPUT = "%d/%m/%Y %H:%M:%S"
+DATETIME_FORMATS_INPUT = [
+    "%d/%m/%Y %H:%M:%S", "%d/%m/%Y",
+]

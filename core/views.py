@@ -4,6 +4,22 @@ from .models import Movimentacao
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q 
 
+from .serializers import MovimentacaoSerializer, MovimentacaoCreateSerializer
+
+from rest_framework import viewsets
+from rest_framework.decorators import api_view , permission_classes
+
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+from rest_framework.response import Response
+
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticatedOrReadOnly,])
+def movi_api(request):
+    mov = Movimentacao.objects.all()
+    serializer = MovimentacaoSerializer(mov, many=True)
+    
+    return Response(serializer.data)
 
 def movimentacao(request):
     search = request.GET.get('search', None)
@@ -35,3 +51,20 @@ def movimentacao(request):
     print(ip)
     
     return render(request,'movimentacao.html', context)
+
+
+class MovimentacaoViewSet(viewsets.ModelViewSet):
+    queryset = Movimentacao.objects.all()
+    serializer_class = MovimentacaoCreateSerializer
+    
+    def get_queryset(self):
+        return self.queryset.filter(deleted_at=None)
+    
+    def get_serializer_class(self):
+        serializer_map = {
+            "list": MovimentacaoSerializer,
+            "retrieve": MovimentacaoSerializer,
+            "create": MovimentacaoCreateSerializer,
+            "update": MovimentacaoCreateSerializer
+        }
+        return serializer_map.get(self.action, super().get_serializer_class())
