@@ -10,11 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-import django_on_heroku
-
-
-
-
 from pathlib import Path
 from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -158,5 +153,3 @@ DATETIME_FORMAT_OUTPUT = "%d/%m/%Y %H:%M:%S"
 DATETIME_FORMATS_INPUT = [
     "%d/%m/%Y %H:%M:%S", "%d/%m/%Y",
 ]
-
-django_on_heroku.settings(locals())
