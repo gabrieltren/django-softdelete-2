@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Usuario
 from django import forms
+
+
 class UsuarioCreateForm(UserCreationForm):
     telefone = forms.CharField(max_length=25)
     class Meta:
