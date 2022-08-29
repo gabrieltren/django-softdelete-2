@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 import django_on_heroku
-django_on_heroku.settings(locals())
+
 
 
 
@@ -158,3 +158,5 @@ DATETIME_FORMAT_OUTPUT = "%d/%m/%Y %H:%M:%S"
 DATETIME_FORMATS_INPUT = [
     "%d/%m/%Y %H:%M:%S", "%d/%m/%Y",
 ]
+
+django_on_heroku.settings(locals())
